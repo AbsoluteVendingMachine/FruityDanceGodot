@@ -73,10 +73,12 @@ func _process(delta: float) -> void:
 			true:
 				borderless = false
 				control.modulate.a8 = 255
+				transparent = false
 			
 			false:
 				borderless = true
 				control.modulate.a8 = 0
+				transparent = true
 				
 
 

@@ -78,7 +78,7 @@ func _process(delta: float) -> void:
 		#initialized = true
 	mouse_position = get_global_mouse_position()
 	#print(mouse_position)
-	if (Input.is_action_pressed("play") or Input.is_action_just_pressed("click")) and instantiated_dancing_window.window_moveable:
+	if Input.is_action_pressed("click") and instantiated_dancing_window.window_moveable:
 		instantiated_dancing_window.sprite.animation_player.play("Held")
 		instantiated_dancing_window.sprite2.animation_player.play("Held")
 		instantiated_dancing_window.sprite3.animation_player.play("Held")

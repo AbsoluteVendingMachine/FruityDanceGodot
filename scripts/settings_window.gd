@@ -17,6 +17,7 @@ var cfg = ConfigFile.new()
 
 
 func _ready():
+	borderless = false
 	await get_tree().create_timer(0.1).timeout
 	if FileAccess.file_exists("user://settings.cfg"):
 		#cfg.load("user://settings.cfg")

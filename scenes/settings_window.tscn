@@ -1,0 +1,292 @@
+[gd_scene load_steps=14 format=3 uid="uid://iep5x6sm1jv0"]
+
+[ext_resource type="Script" path="res://scripts/settings_window.gd" id="1_ge8y4"]
+[ext_resource type="Texture2D" uid="uid://bpblho70qidbh" path="res://wallpaper.png" id="1_hfjfm"]
+[ext_resource type="Theme" uid="uid://cv3tx45yyryg" path="res://theme.tres" id="2_2yyw7"]
+[ext_resource type="Texture2D" uid="uid://kmorfq2q822t" path="res://folder.png" id="2_avagb"]
+[ext_resource type="Texture2D" uid="uid://b1bx48no4cty7" path="res://settings.png" id="3_64e46"]
+[ext_resource type="Texture2D" uid="uid://oftd6bd6ggvb" path="res://play.png" id="4_m5ur8"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f31i3"]
+blend_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_6lihy"]
+offsets = PackedFloat32Array(0.360515, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.647059)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_iwe1b"]
+gradient = SubResource("Gradient_6lihy")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_lor1t"]
+colors = PackedColorArray(0, 0, 0, 0.47451, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4ns3b"]
+gradient = SubResource("Gradient_lor1t")
+width = 220
+height = 240
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_lp121"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xt2jo"]
+gradient = SubResource("Gradient_lp121")
+
+[node name="SettingsWindow" type="Window"]
+transparent_bg = true
+title = "Settings"
+initial_position = 4
+size = Vector2i(320, 240)
+unresizable = true
+transparent = true
+script = ExtResource("1_ge8y4")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("2_2yyw7")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -15.5
+offset_right = 272.0
+offset_bottom = 215.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/VBoxContainer2"]
+visible = false
+z_index = 1
+layout_mode = 2
+text = "Fruity Dance | Settings"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer2"]
+z_index = 1
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Dance move:"
+
+[node name="Animations" type="OptionButton" parent="Control/VBoxContainer2/HBoxContainer"]
+z_index = 3
+layout_mode = 2
+selected = 0
+item_count = 10
+popup/item_0/text = "Freestyle"
+popup/item_1/text = "Waiting"
+popup/item_1/id = 1
+popup/item_2/text = "Stepping"
+popup/item_2/id = 2
+popup/item_3/text = "Jumping"
+popup/item_3/id = 3
+popup/item_4/text = "Zombie"
+popup/item_4/id = 4
+popup/item_5/text = "Waving"
+popup/item_5/id = 5
+popup/item_6/text = "Hula"
+popup/item_6/id = 6
+popup/item_7/text = "Windmill"
+popup/item_7/id = 7
+popup/item_8/text = "Zitabata"
+popup/item_8/id = 8
+popup/item_9/text = "Dervish"
+popup/item_9/id = 9
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer2"]
+z_index = 1
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+text = "BPM:"
+
+[node name="LineEdit" type="SpinBox" parent="Control/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+min_value = 1.0
+max_value = 999.0
+value = 60.0
+custom_arrow_step = 1.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/VBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button2" type="Button" parent="Control/VBoxContainer2/HBoxContainer3"]
+visible = false
+z_index = 2
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Calibrate"
+icon = ExtResource("3_64e46")
+expand_icon = true
+
+[node name="TextureButton" type="TextureRect" parent="Control/VBoxContainer2/HBoxContainer3"]
+visible = false
+z_index = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/VBoxContainer2/HBoxContainer3/TextureButton"]
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("4_m5ur8")
+offset = Vector2(400, 800)
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Control/VBoxContainer2/HBoxContainer3"]
+z_index = 1
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer2/HBoxContainer3/VBoxContainer4"]
+layout_mode = 2
+text = "Drag Offset"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer2/HBoxContainer3/VBoxContainer4"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer2/HBoxContainer3/VBoxContainer4/HBoxContainer"]
+layout_mode = 2
+text = "X"
+
+[node name="LineEdit" type="SpinBox" parent="Control/VBoxContainer2/HBoxContainer3/VBoxContainer4/HBoxContainer"]
+layout_mode = 2
+min_value = -9999.0
+max_value = 9999.0
+value = 228.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer2/HBoxContainer3/VBoxContainer4"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer2/HBoxContainer3/VBoxContainer4/HBoxContainer2"]
+layout_mode = 2
+text = "Y"
+
+[node name="LineEdit" type="SpinBox" parent="Control/VBoxContainer2/HBoxContainer3/VBoxContainer4/HBoxContainer2"]
+layout_mode = 2
+min_value = -9999.0
+max_value = 9999.0
+value = 160.0
+
+[node name="Padding" type="TextureRect" parent="Control/VBoxContainer2/HBoxContainer3"]
+z_index = 1
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer2/HBoxContainer3"]
+visible = false
+z_index = 1
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer2/HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Blend"
+horizontal_alignment = 1
+
+[node name="VSlider" type="VSlider" parent="Control/VBoxContainer2/HBoxContainer3/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+step = 25.0
+tick_count = 5
+ticks_on_borders = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/VBoxContainer2/HBoxContainer3"]
+z_index = 1
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer2/HBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Speed"
+horizontal_alignment = 1
+
+[node name="VSlider" type="VSlider" parent="Control/VBoxContainer2/HBoxContainer3/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+max_value = 6.0
+value = 3.0
+tick_count = 7
+ticks_on_borders = true
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Control/VBoxContainer2/HBoxContainer3"]
+z_index = 1
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer2/HBoxContainer3/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Reflect"
+horizontal_alignment = 1
+
+[node name="VSlider" type="VSlider" parent="Control/VBoxContainer2/HBoxContainer3/VBoxContainer3"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+max_value = 255.0
+step = 51.0
+value = 255.0
+tick_count = 5
+ticks_on_borders = true
+
+[node name="Button" type="Button" parent="Control/VBoxContainer2/HBoxContainer3"]
+z_index = 1
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+icon = ExtResource("2_avagb")
+flat = true
+expand_icon = true
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer2"]
+z_index = 1
+layout_mode = 2
+text = "Recreation made in Godot by AVM"
+horizontal_alignment = 1
+
+[node name="Parallax2D" type="Parallax2D" parent="Control"]
+scroll_offset = Vector2(160, 120)
+repeat_size = Vector2(320, 240)
+autoscroll = Vector2(16, 16)
+repeat_times = 4
+limit_begin = Vector2(160, 120)
+limit_end = Vector2(320, 240)
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Parallax2D"]
+texture = ExtResource("1_hfjfm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+material = SubResource("CanvasItemMaterial_f31i3")
+scale = Vector2(17.465, 17.465)
+texture = SubResource("GradientTexture2D_iwe1b")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Control"]
+position = Vector2(160, 120)
+scale = Vector2(1.725, 1.725)
+texture = SubResource("GradientTexture2D_4ns3b")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Control"]
+z_index = -100
+scale = Vector2(1280, 1280)
+texture = SubResource("GradientTexture1D_xt2jo")
+
+[connection signal="item_selected" from="Control/VBoxContainer2/HBoxContainer/Animations" to="." method="_on_animations_item_selected"]
+[connection signal="value_changed" from="Control/VBoxContainer2/HBoxContainer2/LineEdit" to="." method="_on_bpm_edit_value_changed"]
+[connection signal="pressed" from="Control/VBoxContainer2/HBoxContainer3/Button2" to="." method="_on_calibration_pressed"]
+[connection signal="value_changed" from="Control/VBoxContainer2/HBoxContainer3/VBoxContainer4/HBoxContainer/LineEdit" to="." method="_on_offset_x_value_changed"]
+[connection signal="value_changed" from="Control/VBoxContainer2/HBoxContainer3/VBoxContainer4/HBoxContainer2/LineEdit" to="." method="_on_offset_y_value_changed"]
+[connection signal="value_changed" from="Control/VBoxContainer2/HBoxContainer3/VBoxContainer/VSlider" to="." method="_on_blend_slider_value_changed"]
+[connection signal="value_changed" from="Control/VBoxContainer2/HBoxContainer3/VBoxContainer2/VSlider" to="." method="_on_speed_value_changed"]
+[connection signal="value_changed" from="Control/VBoxContainer2/HBoxContainer3/VBoxContainer3/VSlider" to="." method="_on_reflection_value_changed"]
+[connection signal="pressed" from="Control/VBoxContainer2/HBoxContainer3/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,104 @@
+[gd_scene load_steps=10 format=3 uid="uid://c1gpjehogqn4c"]
+
+[ext_resource type="Script" path="res://scripts/warning_window.gd" id="1_01gpu"]
+[ext_resource type="FontFile" uid="uid://dbqkytkhg73d8" path="res://Oswald-Medium.ttf" id="2_y0lkg"]
+[ext_resource type="Texture2D" uid="uid://bpblho70qidbh" path="res://wallpaper.png" id="4_pgmu2"]
+
+[sub_resource type="Theme" id="Theme_hfjv0"]
+default_font = ExtResource("2_y0lkg")
+default_font_size = 16
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f31i3"]
+blend_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_6lihy"]
+offsets = PackedFloat32Array(0.360515, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.647059)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_iwe1b"]
+gradient = SubResource("Gradient_6lihy")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_lor1t"]
+colors = PackedColorArray(0, 0, 0, 0.47451, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4ns3b"]
+gradient = SubResource("Gradient_lor1t")
+width = 220
+height = 240
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[node name="SettingsWindow" type="Window"]
+title = "Warning!"
+initial_position = 4
+size = Vector2i(320, 240)
+unresizable = true
+always_on_top = true
+script = ExtResource("1_01gpu")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_hfjv0")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -15.5
+offset_right = 272.0
+offset_bottom = 215.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/VBoxContainer2"]
+z_index = 1
+layout_mode = 2
+text = "The spritesheet for character animation isn't 
+detected in the application directory. 
+
+Click the folder icon and put \"Dance.png\" from
+[Where you installed FL Studio]
+\\Plugins\\Fruity\\Generators\\Fruity Dance\\Artwork
+into the directory that pops up. 
+Restart this application afterwards."
+horizontal_alignment = 1
+justification_flags = 171
+
+[node name="Parallax2D" type="Parallax2D" parent="Control"]
+scroll_offset = Vector2(160, 120)
+repeat_size = Vector2(320, 240)
+autoscroll = Vector2(16, 16)
+repeat_times = 4
+limit_begin = Vector2(160, 120)
+limit_end = Vector2(320, 240)
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Parallax2D"]
+modulate = Color(1, 1, 0.576471, 1)
+texture = ExtResource("4_pgmu2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+material = SubResource("CanvasItemMaterial_f31i3")
+scale = Vector2(17.465, 17.465)
+texture = SubResource("GradientTexture2D_iwe1b")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Control"]
+position = Vector2(160, 120)
+scale = Vector2(1.725, 1.725)
+texture = SubResource("GradientTexture2D_4ns3b")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

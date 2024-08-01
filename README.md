@@ -10,7 +10,7 @@ Recreation of Fruity Dance plugin in Godot within capabilities (i.e. what is pos
 ## Actions
 | Action | Keybind |
 | --- | --- |
-| Drag character | Left / Right click
+| Drag character | Left / Right click or Spacebar
 | Resize settings window | R |
 | Quit | X |
 | Hide settings window | H |

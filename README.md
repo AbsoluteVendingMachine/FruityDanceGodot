@@ -14,6 +14,7 @@ Recreation of Fruity Dance plugin in Godot within capabilities (i.e. what is pos
 | Resize settings window | R |
 | Quit | X |
 | Hide settings window | H |
+| Toggle border on character window | B |
 ## Parameters
 | Parameter | Description |
 | --- | --- |

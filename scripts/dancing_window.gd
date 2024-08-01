@@ -25,6 +25,16 @@ func calibrate():
 
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("border"):
+		match borderless:
+			true:
+				borderless = false
+				transparent = false
+			
+			false:
+				borderless = true
+				transparent = true
+				
 	window_moveable = not main.instantiated_settings_window.has_focus()
 	#print(main.mouse_position.distance_to(position))
 	#if main.mouse_position.distance_to(position) < 50:
